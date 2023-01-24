@@ -1,14 +1,12 @@
-Анализатор ошибок
+Анализ уязвимостей данных проекта с помощью статического анализатора уязвимостей кода Сode Warrior (https://github.com/CoolerVoid/codewarrior.git).
 
-Анализ проблемных мест кода был проведен с использованием утилиты codewarrior (ссылка на репозиторий https://github.com/CoolerVoid/codewarrior.git).
 Данный анализатор имеет веб-интерфейс и позволяет проверть код, написанный на нескольких языках.
 
-Исследуемый объект
-Исследуемый репозиторий https://github.com/ABenThabet/Raspi-Security представляет из себя инструмент, способный искать в сети Интернет общедоступные устройства,
-которые являются устройствами Интернет-вещей.
-Данное ПО по данным GitHub написано на нескольких языках: HTML, CSS, JavaScript, PHP, Python. Следовательно поиск ошибок будет проводиться по этим языкам.
+Исследуемый объект:
+https://github.com/ABenThabet/Raspi-Security представляет из себя умную систему дверного звонка на основе распознавания лиц для raspberry pi для отслеживания и информирования владельца о посетителях
 
-Ошибки
+
+Уязвимости:
 
 1) 
 Title: Possible Command injection
@@ -24,6 +22,7 @@ Path: /home/grk/Raspi-Security/www directory/js/google-map/data/ajax.php
 Line: 11 -  		echo '{"title":"Group C","type":"directions","points":[{"lat":45.9,"lon":10.9,"title":"Title A1","html":"A1","icon":"http://maps.google.com/mapfiles/markerA.png"},{"lat":44.8,"lon":1.7,"title":"Title B1","html":","icon":"http://maps.google.com/mapfiles/markerB.png","show_infowindow":false},{"lat":51.5,"lon":-1.1,"title":"Title C1","html": C1Lorem Ipsum..","zoom":8,"icon":"http://maps.google.com/mapfiles/markerC.png"}]}'; 
 Line: 18 -  		echo '{"title":"Group A","type":"marker","points":[{"lat":45.9,"lon":10.9,"title":"Title A1","html":" A1","icon":"http://maps.google.com/mapfiles/markerA.png"},{"lat":44.8,"lon":1.7,"title":"Title B1","html":"B1","icon":"http://maps.google.com/mapfiles/markerB.png","show_infowindow":false},{"lat":51.5,"lon":-1.1,"title":"Title C1","html":"Lorem Ipsum.","zoom":8,"icon":"http://maps.google.com/mapfiles/markerC.png"}]}'; 
 Эту уязвимость легко использовать, и ее использование может привести к серьезным последствиям. Теоретически, если небезопасная связь является слабостью вашего приложения, злоумышленник может прослушать или перехватить ваши данные, передаваемые по сети. 
+
 
 3)
 Title: File Manipulation
@@ -70,6 +69,7 @@ Line: 1217 -          $this->header('Access-Control-Allow-Origin: '.$this->optio
 
 6)
 Title: SHow inputs like get/post/cookies etc...
+
 Description: notification
 Path: /home/grk/Raspi-Security/www directory/modify.php
 Line: 9 -  $id=$_POST["ID"];
