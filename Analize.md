@@ -1,77 +1,78 @@
-Анаизатор ошибок
+Анализатор ошибок
 Анализ проблемных мест кода был проведен с использованием утилиты codewarrior (ссылка на репозиторий https://github.com/CoolerVoid/codewarrior.git).
 Данный анализатор имеет веб-интерфейс и позволяет проверть код, написанный на нескольких языках.
 
 Исследуемый объект
-Исследуемый репозиторий https://github.com/woj-ciech/Kamerka-GUI.git представляет из себя инструмент, способный искать в сети Интернет общедоступные устройства,
+Исследуемый репозиторий https://github.com/ABenThabet/Raspi-Security представляет из себя инструмент, способный искать в сети Интернет общедоступные устройства,
 которые являются устройствами Интернет-вещей.
-Данное ПО по данным GitHub написано на нескольких языках: HTML, CSS, JavaScript, Lua, Python. Следовательно поиск ошибок будет проводиться по этим языкам.
+Данное ПО по данным GitHub написано на нескольких языках: HTML, CSS, JavaScript, PHP, Python. Следовательно поиск ошибок будет проводиться по этим языкам.
 
 Ошибки
 
 1) 
-Title: Possible code injection
+Title: Possible Command injection
 Description: Command injection is an attack in which the goal is execution of arbitrary commands on the host operating system via a vulnerable application.
-Line: 6 -  (function(e){"function"==typeof define&&define.amd?define(["jquery"],e):e(jQuery)})(function(e){function t(t,s){var n,a,o,r=t.nodeName.toLowerCase();return"area"===r?(n=t.parentNode,a=n.name,t.href&&a&&"map"===n.nodeName.toLowerCase()?(o=e("img[usemap=#"+a+"]")[0],!!o&&i(o)):!1):(/input|select|textarea|button|object/.test(r)?!t.disabled:"a"===r?t.href||s:s)&&i(t)}function i(t){return e.expr.filters.visible(t)&&!e(t).parents().addBack().filter(function(){return"hidden"===e.css(this,"visibility")}).length}e.ui=e.ui||{},e.extend(e.ui,{version:"1.11.0",keyCode:{BACKSPACE:8,COMMA:188,DELETE:46,DOWN:40,END:35,ENTER:13,ESCAPE:27,HOME:36,LEFT:37,PAGE_DOWN:34,PAGE_UP:33,PERIOD:190,RIGHT:39,SPACE:32,TAB:9,UP:38}}),e.fn.extend({scrollParent:function(){var t=this.css("position"),i="absolute"===t,s=this.parents().filter(function(){var t=e(this);return i&&"static"===t.css("position")?!1:/(auto|scroll)/.test(t.css("overflow")+t.css("overflow-y")+t.css("overflow-x"))}).eq(0);return"fixed"!==t&&s.length?s:e(this[0].ownerDocument||document)},uniqueId:function(){var e=0;return function(){return this.each(function(){this.id||(this.id="ui-id-"+ ++e)})}}(),removeUniqueId:function(){return this.each(function(){/^ui-id-\\d+$/.test(this.id)&&e(this).removeAttr("id")})}}),e.extend(e.expr[":"],{data:e.expr.createPseudo?e.expr.createPseudo(function(t){return function(i){return!!e.data(i,t)}}):function(t,i,s){return!!e.data(t,s[3])},focusable:function(i){return t(i,!isNaN(e.attr(i,"tabindex")))},tabbable:function(i){var s=e.attr(i,"tabindex"),n=isNaN(s);return(n||s>=0)&&t(i,!n)}}),e("<a>").outerWidth(1).jquery||e.each(["Width","Height"],function(t,i){function s(t,i,s,a){return e.each(n,function(){i-=parseFloat(e.css(t,"padding"+this))||0,s&&(i-=parseFloat(e.css(t,"border"+this+"Width"))||0),a&&(i-=parseFloat(e.css(t,"margin"+this))||0)}),i}var n="Width"===i?["Left","Right"]:["Top","Bottom"],a=i.toLowerCase(),o={innerWidth:e.fn.innerWidth,innerHeight:e.fn.innerHeight,outerWidth:e.fn.outerWidth,outerHeight:e.fn.outerHeight};e.fn["inner"+i]=function(t){return void 0===t?o["inner"+i].call(this):this.each(function(){e(this).css(a,s(this,t)+"px")})},e.fn["outer"+i]=function(t,n){return"number"!=typeof t?o["outer"+i].call(this,t):this.each(function(){e(this).css(a,s(this,t,!0,n)+"px")})}}),e.fn.addBack||(e.fn.addBack=function(e){return this.add(null==e?this.prevObject:this.prevObject.filter(e))}),e("<a>").data("a-b","a").removeData("a-b").data("a-b")&&(e.fn.removeData=function(t){return function(i){return arguments.length?t.call(this,e.camelCase(i)):t.call(this)}}(e.fn.removeData)),e.ui.ie=!!/msie [\\w.]+/.exec(navigator.userAgent.toLowerCase()),e.fn.extend({focus:function(t){return function(i,s){return"number"==typeof i?this.each(function(){var t=this;setTimeout(function(){e(t).focus(),s&&s.call(t)},i)}):t.apply(this,arguments)}}(e.fn.focus),disableSelection:function(){var e="onselectstart"in document.createElement("div")?"selectstart":"mousedown";return function(){return this.bind(e+".ui-disableSelection",function(e){e.preventDefault()})}}(),enableSelection:function(){return this.unbind(".ui-disableSelectLine: 8 -  s++,this.eventNamespace="."+this.widgetName+this.uuid,this.options=e.widget.extend({},this.options,this._getCreateOptions(),t),this.bindings=e(),this.hoverable=e(),this.focusable=e(),i!==this&&(e.data(i,this.widgetFullName,this),this._on(!0,this.element,{remove:function(e){e.target===i&&this.destroy()}}),this.document=e(i.style?i.ownerDocument:i.document||i),this.window=e(this.document[0].defaultView||this.document[0].parentWindow)),this._create(),this._trigger("create",null,this._getCr
-Внедрение команд — это атака, целью которой является выполнение произвольных команд в операционной системе хоста через уязвимое приложение. 
-Атаки с внедрением команд возможны, когда приложение передает небезопасные пользовательские данные (формы, файлы cookie, заголовки HTTP и т. д.) 
-в системную оболочку. В этой атаке команды операционной системы, предоставляемые злоумышленником, обычно выполняются с привилегиями уязвимого приложения. 
-Атаки с внедрением команд возможны в основном из-за недостаточной проверки ввода.
+Line: 2 -  $get_ip= trim(shell_exec('hostname -I'));
+Path: /home/grk/Raspi-Security/www directory/dynamic_table.php
+Внедрение команд — это кибератака , которая включает выполнение произвольных команд в операционной системе хоста (ОС). Как правило, субъект угрозы внедряет команды, используя уязвимость приложения, например недостаточную проверку ввода.
 
 2)
 Title: Detect insecure communication
 Description: Communication without TLS
-Line: 8 -  .rootElement,t.add(e),e.canvas=this},jvm.AbstractCanvasElement.prototype.addPath=function(e,t,n){var r=new jvm[this.classPrefix+"PathElement"](e,t);return this.add(r,n),r},jvm.AbstractCanvasElement.prototype.addCircle=function(e,t,n){var r=new jvm[this.classPrefix+"CircleElement"](e,t);return this.add(r,n),r},jvm.AbstractCanvasElement.prototype.addGroup=function(e){var t=new jvm[this.classPrefix+"GroupElement"];return e?e.node.appendChild(t.node):this.node.appendChild(t.node),t.canvas=this,t},jvm.AbstractShapeElement=function(e,t,n){this.style=n||{},this.style.current={},this.isHovered=!1,this.isSelected=!1,this.updateStyle()},jvm.AbstractShapeElement.prototype.setHovered=function(e){this.isHovered!==e&&(this.isHovered=e,this.updateStyle())},jvm.AbstractShapeElement.prototype.setSelected=function(e){this.isSelected!==e&&(this.isSelected=e,this.updateStyle(),jvm.$(this.node).trigger("selected",[e]))},jvm.AbstractShapeElement.prototype.setStyle=function(e,t){var n={};typeof e=="object"?n=e:n[e]=t,jvm.$.extend(this.style.current,n),this.updateStyle()},jvm.AbstractShapeElement.prototype.updateStyle=function(){var e={};jvm.AbstractShapeElement.mergeStyles(e,this.style.initial),jvm.AbstractShapeElement.mergeStyles(e,this.style.current),this.isHovered&&jvm.AbstractShapeElement.mergeStyles(e,this.style.hover),this.isSelected&&(jvm.AbstractShapeElement.mergeStyles(e,this.style.selected),this.isHovered&&jvm.AbstractShapeElement.mergeStyles(e,this.style.selectedHover)),this.set(e)},jvm.AbstractShapeElement.mergeStyles=function(e,t){var n;t=t||{};for(n in t)t[n]===null?delete e[n]:e[n]=t[n]},jvm.SVGElement=function(e,t){jvm.SVGElement.parentClass.apply(this,arguments)},jvm.inherits(jvm.SVGElement,jvm.AbstractElement),jvm.SVGElement.svgns="http://www.w3.org/2000/svg",jvm.SVGElement.prototype.createElement=function(e){return document.createElementNS(jvm.SVGElement.svgns,e)},jvm.SVGElement.prototype.addClass=function(e){this.node.setAttribute("class",e)},jvm.SVGElement.prototype.getElementCtr=function(e){return jvm["SVG"+e]},jvm.SVGElement.prototype.getBBox=function(){return this.node.getBBox()},jvm.SVGGroupElement=function(){jvm.SVGGroupElement.parentClass.call(this,"g")},jvm.inherits(jvm.SVGGroupElement,jvm.SVGElement),jvm.SVGGroupElement.prototype.add=function(e){this.node.appendChild(e.node)},jvm.SVGCanvasElement=function(e,t,n){this.classPrefix="SVG",jvm.SVGCanvasElement.parentClass.call(this,"svg"),jvm.AbstractCanvasElement.apply(this,arguments)},jvm.inherits(jvm.SVGCanvasElement,jvm.SVGElement),jvm.mixin(jvm.SVGCanvasElement,jvm.AbstractCanvasElement),jvm.SVGCanvasElement.prototype.setSize=function(e,t){this.width=e,this.height=t,this.node.setAttribute("width",e),this.node.setAttribute("height",t)},jvm.SVGCanvasElement.prototype.applyTransformParams=function(e,t,n){this.scale=e,this.transX=t,this.transY=n,this.rootElement.node.setAttribute("transform","scale("+e+") translate("+t+", "+n+")")},jvm.SVGShapeElement=function(e,t,n){jvm.SVGShapeElement.parentClass.call(this,e,t),jvm.AbstractShapeElement.apply(this,arguments)},jvm.inherits(jvm.SVGShapeElement,jvm.SVGElement),jvm.mixin
-или
-Line: 35 -  :function(e,t,i,s){i?i[0].appendChild(this.placeholder[0]):t.item[0].parentNode.insertBefore(this.placeholder[0],"down"===this.direction?t.item[0]:t.item[0].nextSibling),this.counter=this.counter?++this.counter:1;var n=this.counter;this._delay(function(){n===this.counter&&this.refreshPositions(!s)})},_clear:function(e,t){function i(e,t,i){return function(s){i._trigger(e,s,t._uiHash(t))}}this.reverting=!1;var s,n=[];if(!this._noFinalSort&&this.currentItem.parent().length&&this.placeholder.before(this.currentItem),this._noFinalSort=null,this.helper[0]===this.currentItem[0]){for(s in this._storedCSS)("auto"===this._storedCSS[s]||"static"===this._storedCSS[s])&&(this._storedCSS[s]="");this.currentItem.css(this._storedCSS).removeClass("ui-sortable-helper")}else this.currentItem.show();for(this.fromOutside&&!t&&n.push(function(e){this._trigger("receive",e,this._uiHash(this.fromOutside))}),!this.fromOutside&&this.domPosition.prev===this.currentItem.prev().not(".ui-sortable-helper")[0]&&this.domPosition.parent===this.currentItem.parent()[0]||t||n.push(function(e){this._trigger("update",e,this._uiHash())}),this!==this.currentContainer&&(t||(n.push(function(e){this._trigger("remove",e,this._uiHash())}),n.push(function(e){return function(t){e._trigger("receive",t,this._uiHash(this))}}.call(this,this.currentContainer)),n.push(function(e){return function(t){e._trigger("update",t,this._uiHash(this))}}.call(this,this.currentContainer)))),s=this.containers.length-1;s>=0;s--)t||n.push(i("deactivate",this,this.containers[s])),this.containers[s].containerCache.over&&(n.push(i("out",this,this.containers[s])),this.containers[s].containerCache.over=0);if(this.storedCursor&&(this.document.find("body").css("cursor",this.storedCursor),this.storedStylesheet.remove()),this._storedOpacity&&this.helper.css("opacity",this._storedOpacity),this._storedZIndex&&this.helper.css("zIndex","auto"===this._storedZIndex?"":this._storedZIndex),this.dragging=!1,this.cancelHelperRemoval){if(!t){for(this._trigger("beforeStop",e,this._uiHash()),s=0;n.length>s;s++)n[s].call(this,e);this._trigger("stop",e,this._uiHash())}return this.fromOutside=!1,!1}if(t||this._trigger("beforeStop",e,this._uiHash()),this.placeholder[0].parentNode.removeChild(this.placeholder[0]),this.helper[0]!==this.currentItem[0]&&this.helper.remove(),this.helper=null,!t){for(s=0;n.length>s;s++)n[s].call(this,e);this._trigger("stop",e,this._uiHash())}return this.fromOutside=!1,!0},_trigger:function(){e.Widget.prototype._trigger.apply(this,arguments)===!1&&this.cancel()},_uiHash:function(t){var i=t||this;return{helper:i.helper,placeholder:i.placeholder||e([]),position:i.position,originalPosition:i.originalPosition,offset:i.positionAbs,item:i.currentItem,sender:t?t.element:null}}});var o="ui-effects-";e.effects={effect:{}},function(e,t){function i(e,t,i){var s=d[t.type]||{};return null==e?i||!t.def?null:t.def:(e=s.floor?~~e:parseFloat(e),isNaN(e)?t.def:s.mod?(e+s.mod)%s.mod:0>e?0:e>s.max?s.max:e)}function s(i){var s=l(),n=s._rgba=[];return i=i.toLowerCase(),f(h,function(e,a){var o,r=a.re.exec(i),h=r&&a.parse(r),l=a.space||"rgba";return h?(o=s[l](h),
-При разработке мобильного приложения обмен данными обычно осуществляется по принципу клиент-сервер. 
-Когда решение передает свои данные, оно должно проходить через операторскую сеть мобильного устройства и Интернет. 
-Агенты угроз могут использовать уязвимости для перехвата конфиденциальных данных во время их передачи по сети. Существуют следующие агенты угроз:
--Злоумышленник, который использует вашу локальную сеть (скомпрометирован или контролируется Wi-Fi);
--Операторские или сетевые устройства (маршрутизаторы, вышки сотовой связи, прокси-серверы и т. д.); или
--Вредоносное ПО на вашем мобильном устройстве.
+Path: /home/grk/Raspi-Security/www directory/js/google-map/data/ajax.php
+Line: 11 -  		echo '{"title":"Group C","type":"directions","points":[{"lat":45.9,"lon":10.9,"title":"Title A1","html":"<h3>Content A1</h3>","icon":"http://maps.google.com/mapfiles/markerA.png"},{"lat":44.8,"lon":1.7,"title":"Title B1","html":"<h3>Content B1</h3>","icon":"http://maps.google.com/mapfiles/markerB.png","show_infowindow":false},{"lat":51.5,"lon":-1.1,"title":"Title C1","html":"<h3>Content C1</h3><p>Lorem Ipsum..</p>","zoom":8,"icon":"http://maps.google.com/mapfiles/markerC.png"}]}'; 
+Line: 18 -  		echo '{"title":"Group A","type":"marker","points":[{"lat":45.9,"lon":10.9,"title":"Title A1","html":"<h3>Content A1</h3>","icon":"http://maps.google.com/mapfiles/markerA.png"},{"lat":44.8,"lon":1.7,"title":"Title B1","html":"<h3>Content B1</h3>","icon":"http://maps.google.com/mapfiles/markerB.png","show_infowindow":false},{"lat":51.5,"lon":-1.1,"title":"Title C1","html":"<h3>Content C1</h3><p>Lorem Ipsum..</p>","zoom":8,"icon":"http://maps.google.com/mapfiles/markerC.png"}]}'; 
+Эту уязвимость легко использовать, и ее использование может привести к серьезным последствиям. Теоретически, если небезопасная связь является слабостью вашего приложения, злоумышленник может прослушать или перехватить ваши данные, передаваемые по сети. 
 
 3)
-Title: Logic fail
-Description: Possible logic bug that could lead to security bugs. Assigning a static string to a variable in an if condition is not normal and is likely a mistake.
-Line: 310 -  if($.type(instance) === 'object') {
-Логическая ошибка — это ошибка в программе, из-за которой она работает неправильно, но не аварийно завершается (или аварийно завершается ). 
-Логическая ошибка приводит к непреднамеренному или нежелательному выводу или другому поведению, хотя она может быть не сразу распознана как таковая.
-Логические ошибки возникают как в компилируемых , так и в интерпретируемых языках. 
-В отличие от программы с синтаксической ошибкой , программа с логической ошибкой является допустимой программой на языке, хотя и ведет себя не так, как предполагалось. 
-Часто единственным признаком наличия логических ошибок является получение неправильных решений, хотя статический анализ иногда может их обнаружить.
-
-4)
-Title: Information Leak
-Description: Information leak
-Line: 54 -        var key = type + "mark",
-Line: 55 -          count = force ? 0 : ( (jQuery.data( elem, key, undefined, true) || 1 ) - 1 );
-Line: 57 -          jQuery.data( elem, key, count, true );
-Line: 59 -          jQuery.removeData( elem, key, true );
-Программное обеспечение содержит жестко закодированные учетные данные, такие как пароль или криптографический ключ, 
-которые оно использует для собственной входящей аутентификации, исходящей связи с внешними компонентами или шифрования внутренних данных.
-
-5)
-Title: Dash Wallet addr
-Description: Information leak
-Line: 60 -  				background: "url(data:image/png;base64,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
-
-6)
-Title: SHow web inputs to search SSTI or XSS part 2
-Description: notification input here
-Line: 45 -      'django.contrib.sessions',
-Line: 54 -      'django.contrib.sessions.middleware.SessionMiddleware',
-SSTI — это вставка вредоносных элементов в известные шаблонизаторы через встроенные шаблоны, которые используются на стороне сервера. 
-Здесь основная цель этого действия — получить доступ к операциям на стороне сервера.
-
-7)
 Title: File Manipulation
-Description: File Manipulation, check toctou
-Line: 15 -  > 2) use of common, open-source information about devices, and 
+Description: File Manipulation. this is notification
+Path: /home/grk/Raspi-Security/www directory/js/file-uploader/server/php/UploadHandler.php
+Line: 47 -              'mkdir_mode' => 0755,
+Line: 511 -                  mkdir($version_dir, $this->options['mkdir_mode'], true);
+Line: 1035 -                  mkdir($upload_dir, $this->options['mkdir_mode'], true);
+Line: 1045 -                          fopen($uploaded_file, 'r'),
+Line: 1055 -                      fopen('php://input', 'r'),
+Line: 1068 -                      unlink($file_path);
+Line: 1081 -              $handle = fopen($file_path, 'rb');
+Line: 1087 -              fclose($handle);
+Line: 1318 -              $success = is_file($file_path) && $file_name[0] !== '.' && unlink($file_path);
+Line: 1324 -                              unlink($file);
 Программное обеспечение проверяет состояние ресурса перед использованием этого ресурса, но состояние ресурса может измениться между проверкой и
 использованием таким образом, что результаты проверки становятся недействительными. 
 Это может привести к тому, что программное обеспечение будет выполнять недопустимые действия, когда ресурс находится в непредвиденном состоянии.
 Эта уязвимость может иметь отношение к безопасности, когда злоумышленник может влиять на состояние ресурса между проверкой и использованием.
+
+4)
+Title: Possible XSS
+Description: notification at possible XSS
+Path: /home/grk/Raspi-Security/www directory/js/file-uploader/server/php/UploadHandler.php
+Line: 1239 -          if ($print_response && isset($_GET['download'])) {
+тип атаки на веб-системы, заключающийся во внедрении в выдаваемую веб-системой страницу вредоносного кода (который будет выполнен на компьютере пользователя при открытии им этой страницы) и взаимодействии этого кода с веб-сервером злоумышленника. Является разновидностью атаки «Внедрение кода».
+Специфика подобных атак заключается в том, что вредоносный код может использовать авторизацию пользователя в веб-системе для получения к ней расширенного доступа или для получения авторизационных данных пользователя. Вредоносный код может быть вставлен в страницу как через уязвимость в веб-сервере, так и через уязвимость на компьютере пользователя.
+
+5)
+Title: Header injection
+Description: HTTP_HOST is remotely set via Host Header and poor usage often leads to injection or redirection attacks.
+Path: /home/grk/Raspi-Security/www directory/js/file-uploader/server/php/UploadHandler.php
+Line: 186 -              (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : ($_SERVER['SERVER_NAME'].
+Line: 1097 -      protected function header($str) {
+Line: 1098 -          header($str);
+Line: 1111 -                  $this->header('Location: '.sprintf($redirect, rawurlencode($json)));
+Line: 1197 -              $this->header('Content-Disposition: attachment; filename="'.$file_name.'"');
+Line: 1199 -              $this->header('Content-Type: '.$this->get_file_type($file_path));
+Line: 1200 -              $this->header('Content-Disposition: inline; filename="'.$file_name.'"');
+Line: 1202 -          $this->header('Content-Length: '.$this->get_file_size($file_path));
+Line: 1203 -          $this->header('Last-Modified: '.gmdate('D, d M Y H:i:s T', filemtime($file_path)));
+Line: 1217 -          $this->header('Access-Control-Allow-Origin: '.$this->options['access_control_allow_origin']);
+это общий класс уязвимостей безопасности веб-приложений, который возникает, когда заголовки протокола передачи гипертекста (HTTP) динамически генерируются на основе пользовательского ввода. Внедрение заголовка в ответы HTTP может позволить разделить ответ HTTP , зафиксировать сеанс с помощью заголовка Set-Cookie, межсайтовый скриптинг (XSS) и вредоносные атаки с перенаправлением через заголовок местоположения. Внедрение заголовков HTTP является относительно новой областью для веб-атак, и в первую очередь она была впервые применена Амитом Кляйном в его работе о контрабанде/разделении запросов/ответов. 
+
+6)
+Title: SHow inputs like get/post/cookies etc...
+Description: notification
+Path: /home/grk/Raspi-Security/www directory/modify.php
+Line: 9 -  $id=$_POST["ID"];
+
 
 Все вышеперечисленые уязвимые места встречаются неоднократно, в коде есть множество примеров указанных ошибок. 
 Но большинство из них анализатр отмечает низким уровнем угрозы.
